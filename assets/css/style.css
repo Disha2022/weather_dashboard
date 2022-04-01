@@ -1,0 +1,7 @@
+/*header*/
+h1 {
+    text-align: center;
+    background-color: rgb(34, 46, 214);
+    color: white;
+    flex-wrap: wrap;
+}
