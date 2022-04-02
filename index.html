@@ -12,24 +12,39 @@
 </head>
 
 <body class="">
-    <!-------------header-->
+  <!-------------header-->
   <header>
-    <h1 class="header_style">Weather Dashboard</h1>    
+    <h1 class="header_style">Weather Dashboard</h1>
   </header>
   <!-----------------search button and populate data---->
-<section>
+  <section class="search">
     <h2>Search for a City:</h2>
-    <form>
-<input name="cityname" id="cityname" type="text" autofocus="true" class="form-input"/>
-<button type="submit" class="btn">Search</button>
+    <form id="search-city">
+      <input name="cityname" id="cityname" type="text" autofocus="true" class="form-input" />
+      <button type="submit" class="btn">Search</button>
     </form>
 
-</section>
+  </section>
 
-  <main class="">
+  <main class="weather">
+    <!--------------Current weather-->
+    <section #current-weather>
+
+    </section>
+
+
+    <!--------------Future weather-->
+    <section>
+<div id="daily-weather">
+
+</div>
+    </section>
+
   </main>
 
-  <script src="./assets/js/homepage.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="./assets/js/script.js"></script>
 </body>
 
 </html>
