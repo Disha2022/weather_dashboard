@@ -5,3 +5,10 @@ h1 {
     color: white;
     flex-wrap: wrap;
 }
+
+.badUv {
+    background-color: lightcoral;
+}
+.goodUv {
+    background-color: lightgreen;
+}

@@ -3,7 +3,7 @@ var inputCity = document.querySelector('#cityname')
 var apiKey = ('94dd1994e2e5d5cbf8c8a27e72c2477e')
 
 //GET CITY NAME------------------------------------------------------
-var formSubmitHandler = async function(event) {
+var formSubmitHandler = async function (event) {
     // prevent page from refreshing
     event.preventDefault();
 
@@ -25,14 +25,14 @@ var formSubmitHandler = async function(event) {
 };
 
 // GET LOCATION OF A CITY---------------------------------------------
-var getCityLocation = async function(cityName) {
+var getCityLocation = async function (cityName) {
 
     // format the api url
     var apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=' + apiKey
 
     // make a get request to url
     return await fetch(apiUrl)
-        .then(function(response) {
+        .then(function (response) {
             // request was successful
             if (response.ok) {
                 // Get variables
@@ -40,7 +40,7 @@ var getCityLocation = async function(cityName) {
             } else {
                 alert('Error: ' + response.statusText);
             }
-        }).then(function(data) {
+        }).then(function (data) {
             var myLon = data.coord.lon;
             var myLat = data.coord.lat;
             return data
@@ -53,17 +53,20 @@ var getCityLocation = async function(cityName) {
 //GET WEATHER DATA BASED ON LOCATION------------------------------------------------------------
 function getWeatherData(lat, lon) {
     //create new api url with coordinates
-    var newApiUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lon + '&exclude=hourly&appid=' + apiKey;
+    var newApiUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=' +
+        lat + '&lon=' + lon +
+        '&exclude=hourly&appid=' + apiKey +
+        '&units=imperial';
 
     //Fetch data with new url
     return fetch(newApiUrl)
-        .then(function(response) {
+        .then(function (response) {
             if (response.ok) {
                 return response.json()
             } else {
                 alert('Error: ' + response.statusText);
             }
-        }).then(function(data) {
+        }).then(function (data) {
             console.log(data)
             return data
 
@@ -81,6 +84,15 @@ async function getCurrentWeather(lat, lon) {
     var myUvi = weatherData.current.uvi
 
     $("#current-temp").text(currentTemp);
+    $("#current-wind").text(myWindSpeed);
+    $("#current-humidity").text(myHumidity);
+    $("#current-uv").text(myUvi);
+    if (myUvi > 2 || myUvi === 0) {
+        $("#current-uv").addClass("badUv")
+    }
+    if (myUvi <= 2) {
+        $("#current-uv").addClass("goodUv")
+    }
 }
 
 //GET DAILY WEATHER--------------------------------------------------------------------------
@@ -95,7 +107,7 @@ async function getDailyWeather(lat, lon) {
         var myWindSpeed = myWeather.wind_speed
         var myHumidity = myWeather.humidity
         var myUvi = myWeather.uvi
-            //Appednd to html
+        //Appednd to html
 
     }
 }
@@ -121,7 +133,7 @@ formCity.addEventListener('submit', formSubmitHandler);
 // .catch (function(error) {
 //   alert('Error: ' + response.statusText);
 //   console.log('failed')
-// }) 
+// })
 
 // var currentTemp = data.current.temp
 // var myWindSpeed = data.current.wind_speed
@@ -140,7 +152,7 @@ formCity.addEventListener('submit', formSubmitHandler);
 
 
 // function appendText() {
-//   var txt1 = "<p>Text.</p>";               // Create element with HTML 
+//   var txt1 = "<p>Text.</p>";               // Create element with HTML
 //   var txt2 = $("<p></p>").text("Text.");   // Create with jQuery
 //   var txt3 = document.createElement("p");  // Create with DOM
 //   txt3.innerHTML = "Text.";
