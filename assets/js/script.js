@@ -3,6 +3,33 @@ $(function () {
     var inputCity = document.querySelector('#city-name')
     var apiKey = ('94dd1994e2e5d5cbf8c8a27e72c2477e')
 
+    // first time will result in null so defaulting to array with some cities
+    const searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || 
+    ["Austin",
+    "Chicago",
+    "New York",
+    "Orlando",
+    "San Francisco",
+    "Seattle",
+    "Denver",
+    "Atlanta"];
+    
+    const citiesHistory = $('#cities-history');
+    for (let i = 0; i < searchHistory.length; i++) {
+        const cityName = searchHistory[i];
+        addCityHistoryListItem(cityName)
+    }
+    function addCityHistoryListItem(cityName) {
+        var myLi = $("<li></li>");
+        myLi.text(cityName);
+        myLi.on("click", function (event) {
+            inputCity.value = $(this).text()
+            formSubmitHandler(event);
+        })
+        citiesHistory.append(myLi);
+    }
+
+
     //GET CITY NAME------------------------------------------------------
     var formSubmitHandler = async function (event) {
         // prevent page from refreshing
@@ -11,9 +38,16 @@ $(function () {
         // get value (city name) from input element
         var cityName = inputCity.value.trim();
 
-        //Using async await to get location data before getting weather data-------------
+        // Using async await to get location data before getting weather data-------------
         if (cityName) {
             $("#location").text(cityName);
+            // Don't add city to history if it already is there
+            if (!searchHistory.includes(cityName)) {
+                addCityHistoryListItem(cityName);
+                searchHistory.push(cityName);
+                localStorage.setItem("searchHistory", JSON.stringify(searchHistory))
+            }
+
             var myData = await getCityLocation(cityName);
             var myLon = myData.coord.lon;
             var myLat = myData.coord.lat;
@@ -28,7 +62,7 @@ $(function () {
     // GET LOCATION OF A CITY---------------------------------------------
     var getCityLocation = async function (cityName) {
         // format the api url
-        var apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + 
+        var apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' +
             cityName + '&appid=' + apiKey
 
         // make a get request to url
@@ -71,10 +105,18 @@ $(function () {
         var myWindSpeed = weatherData.current.wind_speed
         var myHumidity = weatherData.current.humidity
         var myUvi = weatherData.current.uvi
+
         var iconId = weatherData.current.weather[0].icon
         // returns a 100 by 100 pixel icon
         var myIconUrl = "http://openweathermap.org/img/wn/" + iconId + "@2x.png"
-        $("#current-image").attr("src", myIconUrl);        
+        $("#current-image").attr("src", myIconUrl);
+        // API gives unix UTC
+        // this must be x1000 to convert to JS Date
+        var formattedDate = new Date(weatherData.current.dt * 1000).toLocaleDateString(
+            'en-us' // this gives MM/DD/YYYY
+        );
+        $("#location-date").text(formattedDate)
+
         $("#current-temp").text(currentTemp);
         $("#current-wind").text(myWindSpeed);
         $("#current-humidity").text(myHumidity);
@@ -104,25 +146,17 @@ $(function () {
             var iconId = myWeather.weather[0].icon
             // returns a 100 by 100 pixel icon
             var myIconUrl = "http://openweathermap.org/img/wn/" + iconId + "@2x.png"
-            
+
             var currentTemp = myWeather.temp.day
             var myWindSpeed = myWeather.wind_speed
             var myHumidity = myWeather.humidity
             //Appednd to html
         }
     }
-  
+
 
     ///click button------------------------------------------------------------------------------
     formCity.addEventListener('submit', formSubmitHandler);
-
-    $("#cities-list > li > button").each(function () {
-        // jquery version of addEventListener
-        $(this).on("click", function (event) {
-            inputCity.value = $(this).text()
-            formSubmitHandler(event);
-        })
-    })
 
     //   $( "div.daily-weather" )
     //   .html(`<p>Temp: ${currentTemp} </p>`);
