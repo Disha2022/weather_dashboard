@@ -4,16 +4,16 @@ $(function () {
     var apiKey = ('94dd1994e2e5d5cbf8c8a27e72c2477e')
 
     // first time will result in null so defaulting to array with some cities
-    const searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || 
-    ["Austin",
-    "Chicago",
-    "New York",
-    "Orlando",
-    "San Francisco",
-    "Seattle",
-    "Denver",
-    "Atlanta"];
-    
+    const searchHistory = JSON.parse(localStorage.getItem("searchHistory")) ||
+        ["Austin",
+            "Chicago",
+            "New York",
+            "Orlando",
+            "San Francisco",
+            "Seattle",
+            "Denver",
+            "Atlanta"];
+
     const citiesHistory = $('#cities-history');
     for (let i = 0; i < searchHistory.length; i++) {
         const cityName = searchHistory[i];
@@ -21,12 +21,15 @@ $(function () {
     }
     function addCityHistoryListItem(cityName) {
         var myLi = $("<li></li>");
-        myLi.text(cityName);
+        var myBtn = $("<button></button>")
+        myBtn.text(cityName);
+        myLi.append(myBtn);
         myLi.on("click", function (event) {
             inputCity.value = $(this).text()
             formSubmitHandler(event);
         })
         citiesHistory.append(myLi);
+
     }
 
 
@@ -99,7 +102,7 @@ $(function () {
 
     // API gives unix UTC
     // this must be x1000 to convert to JS Date
-    function formatDate(dt){
+    function formatDate(dt) {
         return new Date(dt * 1000).toLocaleDateString(
             'en-us' // this gives MM/DD/YYYY
         );

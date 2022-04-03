@@ -5,16 +5,58 @@ h1 {
     color: white;
     flex-wrap: wrap;
 }
+
+img{
+    height: 2em;
+}
 main {
     display: flex;
 }
 
+.search{
+    width: 25%;
+}
+button {
+    width: 100%;
+    padding: 3%;
+}
+input {
+    width: 98%;
+    border-width:2%;
+    padding: 0;
+}
+.btn {
+    background-color: lightblue;
+}
+
+ul {
+    list-style-type:none;
+    padding-inline-start: 0;
+}
+.search li {
+    margin-bottom: 5%;
+}
+
+.weather {
+    width: 75%;
+}
+#current-weather{
+    border: black;
+    border-style: solid;
+}
+#current-uv {
+    width: auto;
+    padding-top: 0;
+    padding-bottom: 0;
+    color: white;
+}
 .bad-uv {
     background-color: darkred;
 }
 .medium-uv {
     background-color: lightcoral;
+    color: black;
 }
 .good-uv {
-    background-color: lightgreen;
+    background-color: darkgreen;
 }
