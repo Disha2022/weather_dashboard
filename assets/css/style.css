@@ -6,9 +6,6 @@ h1 {
     flex-wrap: wrap;
 }
 
-img{
-    height: 2em;
-}
 main {
     display: flex;
 }
@@ -29,7 +26,7 @@ input {
 .btn {
     background-color: lightblue;
 }
-
+/* history */
 ul {
     list-style-type:none;
     padding-inline-start: 0;
@@ -40,6 +37,11 @@ ul {
 
 .weather {
     width: 75%;
+}
+/* these are weather icons */
+/* limit the height so img is not too big */
+img{
+    height: 2em;
 }
 #current-weather{
     border: black;
@@ -62,11 +64,11 @@ ul {
 .good-uv {
     background-color: darkgreen;
 }
-
+/* 5 day */
 #forecast-container {
     display: flex;
 }
-
+/* section created in js */
 #forecast-container section {
     display: inline-block;
     background-color: grey;
