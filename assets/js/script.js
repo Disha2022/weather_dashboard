@@ -97,6 +97,14 @@ $(function () {
             })
     }
 
+    // API gives unix UTC
+    // this must be x1000 to convert to JS Date
+    function formatDate(dt){
+        return new Date(dt * 1000).toLocaleDateString(
+            'en-us' // this gives MM/DD/YYYY
+        );
+    }
+
     //GET CURRENT WEATHER-----------------------------------------------------------------------
     async function getCurrentWeather(lat, lon) {
         //getting weather data
@@ -110,11 +118,8 @@ $(function () {
         // returns a 100 by 100 pixel icon
         var myIconUrl = "http://openweathermap.org/img/wn/" + iconId + "@2x.png"
         $("#current-image").attr("src", myIconUrl);
-        // API gives unix UTC
-        // this must be x1000 to convert to JS Date
-        var formattedDate = new Date(weatherData.current.dt * 1000).toLocaleDateString(
-            'en-us' // this gives MM/DD/YYYY
-        );
+
+        var formattedDate = formatDate(weatherData.current.dt);
         $("#location-date").text(formattedDate)
 
         $("#current-temp").text(currentTemp);
@@ -122,12 +127,15 @@ $(function () {
         $("#current-humidity").text(myHumidity);
         $("#current-uv").text(myUvi);
         if (myUvi <= 2) {
+            $("#current-uv").removeClass("medium-uv bad-uv")
             $("#current-uv").addClass("good-uv")
         }
         if (myUvi > 2 && myUvi < 5) {
+            $("#current-uv").removeClass("good-uv bad-uv")
             $("#current-uv").addClass("medium-uv")
         }
         if (myUvi >= 5) {
+            $("#current-uv").removeClass("medium-uv good-uv")
             $("#current-uv").addClass("bad-uv")
         }
     }
@@ -139,45 +147,35 @@ $(function () {
         console.log(weatherData)
         var container = $("#5-day-container");
         for (let i = 0; i < 4; i++) {
-            var myh4 = document.createElement("h4");
-            myh4.innerHTML = "test";
-            container.append(myh4)
             var myWeather = weatherData.daily[i];
+            // Append to html
+            var myh4 = document.createElement("h4");
+            myh4.innerHTML = formatDate(myWeather.dt);
+            container.append(myh4)
+
+            var myIcon = $("<img></img>");
             var iconId = myWeather.weather[0].icon
             // returns a 100 by 100 pixel icon
             var myIconUrl = "http://openweathermap.org/img/wn/" + iconId + "@2x.png"
+            myIcon.attr("src", myIconUrl);
+            container.append(myIcon);
 
-            var currentTemp = myWeather.temp.day
-            var myWindSpeed = myWeather.wind_speed
-            var myHumidity = myWeather.humidity
-            //Appednd to html
+            var myTemp = document.createElement("p");
+            myTemp.innerHTML = myWeather.temp.day + " &deg;F"
+            container.append(myTemp);
+
+            var myWindSpeed = document.createElement("p");
+            myWindSpeed.innerHTML = myWeather.wind_speed + " MPH"
+            container.append(myWindSpeed);
+
+            var myHumidity = document.createElement("p");
+            myHumidity.innerHTML = myWeather.humidity + " %"
+            container.append(myHumidity);
         }
     }
 
 
     ///click button------------------------------------------------------------------------------
     formCity.addEventListener('submit', formSubmitHandler);
-
-    //   $( "div.daily-weather" )
-    //   .html(`<p>Temp: ${currentTemp} </p>`);
-    //     // }
-    // })
-    // .catch (function(error) {
-    //   alert('Error: ' + response.statusText);
-    //   console.log('failed')
-    // })
-
-    // function appendText() {
-    //   var txt1 = "<p>Text.</p>";               // Create element with HTML
-    //   var txt2 = $("<p></p>").text("Text.");   // Create with jQuery
-    //   var txt3 = document.createElement("p");  // Create with DOM
-    //   txt3.innerHTML = "Text.";
-    //   $("body").append(txt1, txt2, txt3);      // Append the new elements
-    // }
-
-    // // var test = $("div.daily-weather")
-    // //   .html(`<p>Temp: ${currentTemp} </p>`);
-    // // // }
-    // // $(current - weather).append(test);
 
 }); // end document page ready
