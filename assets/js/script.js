@@ -1,3 +1,4 @@
+$(function() {
 var formCity = document.querySelector('#search-city')
 var inputCity = document.querySelector('#cityname')
 var apiKey = ('94dd1994e2e5d5cbf8c8a27e72c2477e')
@@ -116,6 +117,13 @@ async function getDailyWeather(lat, lon) {
 ///click button------------------------------------------------------------------------------
 formCity.addEventListener('submit', formSubmitHandler);
 
+$("#citiesList > li > button").each(function(){
+    // jquery version of addEventListener
+    $(this).on("click", function(event){
+        inputCity.value = $(this).text()
+        formSubmitHandler(event);
+    })
+})
 
 
 // console.log(data)
@@ -163,3 +171,5 @@ formCity.addEventListener('submit', formSubmitHandler);
 // //   .html(`<p>Temp: ${currentTemp} </p>`);
 // // // }
 // // $(current - weather).append(test);
+
+}); // end document page ready
