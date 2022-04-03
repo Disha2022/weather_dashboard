@@ -15,6 +15,7 @@ main {
 
 .search{
     width: 25%;
+    margin: 2%
 }
 button {
     width: 100%;
@@ -43,6 +44,7 @@ ul {
 #current-weather{
     border: black;
     border-style: solid;
+    padding: 2%;
 }
 #current-uv {
     width: auto;
@@ -59,4 +61,16 @@ ul {
 }
 .good-uv {
     background-color: darkgreen;
+}
+
+#forecast-container {
+    display: flex;
+}
+
+#forecast-container section {
+    display: inline-block;
+    background-color: grey;
+    margin-right: 5%;
+    padding-right: 15%;
+
 }

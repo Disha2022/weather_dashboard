@@ -148,32 +148,36 @@ $(function () {
     async function getDailyWeather(lat, lon) {
         var weatherData = await getWeatherData(lat, lon);
         console.log(weatherData)
-        var container = $("#5-day-container");
-        for (let i = 0; i < 4; i++) {
+        var forecastContainer = $("#forecast-container");
+        for (let i = 1; i < 6; i++) {
             var myWeather = weatherData.daily[i];
+            var dateContainer =$("<section></section>");
+
             // Append to html
             var myh4 = document.createElement("h4");
             myh4.innerHTML = formatDate(myWeather.dt);
-            container.append(myh4)
+            dateContainer.append(myh4)
 
             var myIcon = $("<img></img>");
             var iconId = myWeather.weather[0].icon
             // returns a 100 by 100 pixel icon
             var myIconUrl = "http://openweathermap.org/img/wn/" + iconId + "@2x.png"
             myIcon.attr("src", myIconUrl);
-            container.append(myIcon);
+            dateContainer.append(myIcon);
 
             var myTemp = document.createElement("p");
             myTemp.innerHTML = myWeather.temp.day + " &deg;F"
-            container.append(myTemp);
+            dateContainer.append(myTemp);
 
             var myWindSpeed = document.createElement("p");
             myWindSpeed.innerHTML = myWeather.wind_speed + " MPH"
-            container.append(myWindSpeed);
+            dateContainer.append(myWindSpeed);
 
             var myHumidity = document.createElement("p");
             myHumidity.innerHTML = myWeather.humidity + " %"
-            container.append(myHumidity);
+            dateContainer.append(myHumidity);
+
+            forecastContainer.append(dateContainer);
         }
     }
 
