@@ -93,13 +93,17 @@ $(function () {
         console.log(weatherData)
         for (let i = 0; i < 4; i++) {
             var myWeather = weatherData.daily[i];
-            var currentTemp = myWeather.temp
+            var iconId = myWeather.weather[0].icon
+            // returns a 100 by 100 pixel icon
+            var myIconUrl = "http://openweathermap.org/img/wn/" + iconId + "@2x.png"
+            
+            var currentTemp = myWeather.temp.day
             var myWindSpeed = myWeather.wind_speed
             var myHumidity = myWeather.humidity
-            var myUvi = myWeather.uvi
             //Appednd to html
         }
     }
+  
 
     ///click button------------------------------------------------------------------------------
     formCity.addEventListener('submit', formSubmitHandler);
