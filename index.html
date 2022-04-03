@@ -15,40 +15,43 @@
   <header>
     <h1 class="header-style">Weather Dashboard</h1>
   </header>
-  <!-----------------search button and populate data---->
-  <section class="search">
-    <h2>Search for a City:</h2>
-    <form id="search-city">
-      <input name="cityname" id="city-name" type="text" autofocus="true" class="form-input" />
-      <button type="submit" class="btn">Search</button>
-      <hr> <!-- line break-->
-      <ul id="cities-history">
-      </ul>
-    </form>
-  </section>
 
-  <main class="weather">
-    <!--------------Current weather-->
-    <section id="current-weather">
-      <h2 id="current-date">
-        <span id="location"></span>
-        <span id="location-date"></span>
-        <img id="current-image"></img>
-      </h2>
-      <div>
-        <p> Temp: <span id="current-temp"></span>&deg;F</p>
-        <p> Wind: <span id="current-wind"></span> MPH</p>
-        <p> Humidity: <span id="current-humidity"></span> %</p>
-        <p> UV Index: <span id="current-uv"></span></p>
-      </div>
-    </section>
+  <main>
+    <!-----------------search button and populate data---->
+    <div class="search">
+      <h2>Search for a City:</h2>
+      <form id="search-city">
+        <input name="cityname" id="city-name" type="text" autofocus="true" class="form-input" />
+        <button type="submit" class="btn">Search</button>
+        <hr> <!-- line break-->
+        <ul id="cities-history">
+        </ul>
+      </form>
+    </div>
 
-    <!--------------Future weather-->
-    <section id="daily-weather">
+    <div class="weather">
+      <!--------------Current weather-->
+      <section id="current-weather">
+        <h2 id="current-date">
+          <span id="location"></span>
+          <span id="location-date"></span>
+          <img id="current-image"></img>
+        </h2>
+        <div>
+          <p> Temp: <span id="current-temp"></span>&deg;F</p>
+          <p> Wind: <span id="current-wind"></span> MPH</p>
+          <p> Humidity: <span id="current-humidity"></span> %</p>
+          <p> UV Index: <span id="current-uv"></span></p>
+        </div>
+      </section>
+
+      <!--------------Future weather-->
+      <section id="daily-weather">
         <h3>5-Day Forecast:</h3>
         <div id="5-day-container">
         </div>
-    </section>
+      </section>
+    </div>
 
   </main>
 

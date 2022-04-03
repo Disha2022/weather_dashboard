@@ -5,6 +5,9 @@ h1 {
     color: white;
     flex-wrap: wrap;
 }
+main {
+    display: flex;
+}
 
 .bad-uv {
     background-color: darkred;
