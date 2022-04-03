@@ -13,6 +13,7 @@ $(function () {
 
         //Using async await to get location data before getting weather data-------------
         if (cityName) {
+            $("#location").text(cityName);
             var myData = await getCityLocation(cityName);
             var myLon = myData.coord.lon;
             var myLat = myData.coord.lat;
@@ -70,7 +71,10 @@ $(function () {
         var myWindSpeed = weatherData.current.wind_speed
         var myHumidity = weatherData.current.humidity
         var myUvi = weatherData.current.uvi
-
+        var iconId = weatherData.current.weather[0].icon
+        // returns a 100 by 100 pixel icon
+        var myIconUrl = "http://openweathermap.org/img/wn/" + iconId + "@2x.png"
+        $("#current-image").attr("src", myIconUrl);        
         $("#current-temp").text(currentTemp);
         $("#current-wind").text(myWindSpeed);
         $("#current-humidity").text(myHumidity);
@@ -91,7 +95,11 @@ $(function () {
     async function getDailyWeather(lat, lon) {
         var weatherData = await getWeatherData(lat, lon);
         console.log(weatherData)
+        var container = $("#5-day-container");
         for (let i = 0; i < 4; i++) {
+            var myh4 = document.createElement("h4");
+            myh4.innerHTML = "test";
+            container.append(myh4)
             var myWeather = weatherData.daily[i];
             var iconId = myWeather.weather[0].icon
             // returns a 100 by 100 pixel icon
