@@ -6,9 +6,12 @@ h1 {
     flex-wrap: wrap;
 }
 
-.badUv {
+.bad-uv {
+    background-color: darkred;
+}
+.medium-uv {
     background-color: lightcoral;
 }
-.goodUv {
+.good-uv {
     background-color: lightgreen;
 }

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,58 +7,51 @@
   <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
   <link rel="stylesheet" href="./assets/css/style.css" />
-  <title>weather</title>
+  <title>Weather Dashboard</title>
 </head>
 
 <body class="">
   <!-------------header-->
   <header>
-    <h1 class="header_style">Weather Dashboard</h1>
+    <h1 class="header-style">Weather Dashboard</h1>
   </header>
   <!-----------------search button and populate data---->
   <section class="search">
     <h2>Search for a City:</h2>
     <form id="search-city">
-      <input name="cityname" id="cityname" type="text" autofocus="true" class="form-input" />
+      <input name="cityname" id="city-name" type="text" autofocus="true" class="form-input" />
       <button type="submit" class="btn">Search</button>
       <hr> <!-- line break-->
-      <ul id="citiesList">
+      <ul id="cities-list">
         <li><button>Austin</button></li>
         <li><button>Chicago</button></li>
         <li><button>New York</button></li>
         <li><button>Orlando</button></li>
         <li><button>San Francisco</button></li>
-        <li><button>Seattle</button></li>      
+        <li><button>Seattle</button></li>
         <li><button>Denver</button></li>
         <li><button>Atlanta</button></li>
       </ul>
     </form>
-
   </section>
 
   <main class="weather">
     <!--------------Current weather-->
-
     <section id="current-weather">
-      <h2 id="current-date"><span id="location date"></span></h2>
+      <h2 id="current-date"><span id="location-date"></span></h2>
       <div>
-
-<p> Temp: <span id="current-temp"></span> &deg;F</p>
-<p> Wind: <span id="current-wind"></span> MPH</p>
-<p> Humidity: <span id="current-humidity"></span>%</p>
-<p> UV Index: <span id="current-uv"></span></p>
-
+        <p> Temp: <span id="current-temp"></span> &deg;F</p>
+        <p> Wind: <span id="current-wind"></span> MPH</p>
+        <p> Humidity: <span id="current-humidity"></span>%</p>
+        <p> UV Index: <span id="current-uv"></span></p>
       </div>
-
-
     </section>
 
-
     <!--------------Future weather-->
-    <section>
-      <div id="daily-weather">
-
-      </div>
+    <section id="daily-weather">
+        <h3>5-Day Forecast:</h3>
+        <div id="5-day-container">
+        </div>
     </section>
 
   </main>
@@ -68,5 +60,4 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   <script src="./assets/js/script.js"></script>
 </body>
-
 </html>

@@ -1,6 +1,6 @@
 $(function() {
 var formCity = document.querySelector('#search-city')
-var inputCity = document.querySelector('#cityname')
+var inputCity = document.querySelector('#city-name')
 var apiKey = ('94dd1994e2e5d5cbf8c8a27e72c2477e')
 
 //GET CITY NAME------------------------------------------------------
@@ -88,12 +88,17 @@ async function getCurrentWeather(lat, lon) {
     $("#current-wind").text(myWindSpeed);
     $("#current-humidity").text(myHumidity);
     $("#current-uv").text(myUvi);
-    if (myUvi > 2 || myUvi === 0) {
-        $("#current-uv").addClass("badUv")
-    }
     if (myUvi <= 2) {
-        $("#current-uv").addClass("goodUv")
+        $("#current-uv").addClass("good-uv")
     }
+    if (myUvi > 2 && myUvi < 5){
+        $("#current-uv").addClass("medium-uv")
+    }
+    if (myUvi >= 5) {
+        $("#current-uv").addClass("bad-uv")
+    }
+    
+
 }
 
 //GET DAILY WEATHER--------------------------------------------------------------------------
@@ -117,7 +122,7 @@ async function getDailyWeather(lat, lon) {
 ///click button------------------------------------------------------------------------------
 formCity.addEventListener('submit', formSubmitHandler);
 
-$("#citiesList > li > button").each(function(){
+$("#cities-list > li > button").each(function(){
     // jquery version of addEventListener
     $(this).on("click", function(event){
         inputCity.value = $(this).text()
