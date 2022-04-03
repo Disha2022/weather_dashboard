@@ -149,6 +149,7 @@ $(function () {
         var weatherData = await getWeatherData(lat, lon);
         console.log(weatherData)
         var forecastContainer = $("#forecast-container");
+        forecastContainer.empty();
         for (let i = 1; i < 6; i++) {
             var myWeather = weatherData.daily[i];
             var dateContainer =$("<section></section>");
