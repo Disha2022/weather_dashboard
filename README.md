@@ -1,12 +1,11 @@
 # 06 Server-Side APIs: Weather Dashboard
-
 ## Author 
 Disha Barua 
 
 ## Link
-Deployed code: 
+Deployed code: https://github.com/Disha2022/weather_dashboard
 
-Github repository: 
+Github repository: https://disha2022.github.io/weather_dashboard/
 
 ## User Story
 
@@ -23,6 +22,12 @@ SO THAT I can plan a trip accordingly
 4. JQuery
 5. OpenWeather One Call API==> (https://openweathermap.org/api/one-call-api) 
 
+
+## Files
+1. index.html
+2. style.css
+3. script.js
+4. README.md
 ## Procedure
 
 1. Initialized html, css and JavaScript files.
