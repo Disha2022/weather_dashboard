@@ -3,9 +3,9 @@
 Disha Barua 
 
 ## Link
-Deployed code: https://github.com/Disha2022/weather_dashboard
+Github Repository: https://github.com/Disha2022/weather_dashboard
 
-Github repository: https://disha2022.github.io/weather_dashboard/
+Deployed Code: https://disha2022.github.io/weather_dashboard/
 
 ## User Story
 
