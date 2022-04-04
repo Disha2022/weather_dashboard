@@ -10,7 +10,7 @@
   <title>Weather Dashboard</title>
 </head>
 
-<body class="">
+<body>
   <!-------------header-->
   <header>
     <h1 class="header-style">Weather Dashboard</h1>
@@ -21,7 +21,7 @@
     <div class="search">
       <h2>Search for a City:</h2>
       <form id="search-city">
-        <input name="cityname" id="city-name" type="text" autofocus="true" class="form-input" />
+        <input name="cityname" placeholder ="San Diego" id="city-name" type="text" autofocus="true" class="form-input" />
         <button type="submit" class="btn">Search</button>
         <hr> <!-- line break-->
         <ul id="cities-history">
@@ -37,7 +37,7 @@
           <span id="location-date"></span>
           <img id="current-image"></img>
         </h2>
-        <div>
+        <div class="current-param">
           <p> Temp: <span id="current-temp"></span>&deg;F</p>
           <p> Wind: <span id="current-wind"></span> MPH</p>
           <p> Humidity: <span id="current-humidity"></span> %</p>
