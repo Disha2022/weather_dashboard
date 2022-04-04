@@ -45,7 +45,8 @@ SO THAT I can plan a trip accordingly
 13. Added placeholder and fixed css.
 
 ## Demo
-The following image demonstrates the application functionality:
+The following image and Gif demonstrates the application functionality:
+![Weather Dashboard Demo Gif.](./assets/images/Weather-Dashboard.gif)
 
 ![weather dashboard demo](./assets/images/06-server-side-apis-homework-demo.png)
 
