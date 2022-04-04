@@ -167,15 +167,15 @@ $(function () {
             dateContainer.append(myIcon);
 
             var myTemp = document.createElement("p");
-            myTemp.innerHTML = myWeather.temp.day + " &deg;F"
+            myTemp.innerHTML = "Temp: " + myWeather.temp.day + " &deg;F"
             dateContainer.append(myTemp);
 
             var myWindSpeed = document.createElement("p");
-            myWindSpeed.innerHTML = myWeather.wind_speed + " MPH"
+            myWindSpeed.innerHTML = "Wind: " + myWeather.wind_speed + " MPH"
             dateContainer.append(myWindSpeed);
 
             var myHumidity = document.createElement("p");
-            myHumidity.innerHTML = myWeather.humidity + " %"
+            myHumidity.innerHTML = "Humidity: " + myWeather.humidity + " %"
             dateContainer.append(myHumidity);
 
             forecastContainer.append(dateContainer);

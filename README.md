@@ -1,8 +1,12 @@
 # 06 Server-Side APIs: Weather Dashboard
 
-Developers are often tasked with retrieving data from another application's API and using it in the context of their own. Third-party APIs allow developers to access their data and functionality by making requests with specific parameters to a URL. Your challenge is to build a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS.
+## Author 
+Disha Barua 
 
-Use the [OpenWeather One Call API](https://openweathermap.org/api/one-call-api) to retrieve weather data for cities. Read through the documentation for setup and usage instructions. You will use `localStorage` to store any persistent data.
+## Link
+Deployed code: 
+
+Github repository: 
 
 ## User Story
 
@@ -12,6 +16,36 @@ I WANT to see the weather outlook for multiple cities
 SO THAT I can plan a trip accordingly
 ```
 
+## Tools
+1. CSS
+2. HTML
+3. Javascript
+4. JQuery
+5. OpenWeather One Call API==> (https://openweathermap.org/api/one-call-api) 
+
+## Procedure
+
+1. Initialized html, css and JavaScript files.
+2. Created html structure and css for main header.
+3. Created event handler for "Search" button.
+4. Created fetch functions to call coordinates api and then weather api for current day
+5. Refactored function to reduce nesting and better use of .then
+6. Showed different background color based on UV severity.
+7. Added search history in JS, reading local storage on load, saving to local storage after search.
+8. Added weather icon by creating img url based on weather api id.
+9. Added function to convert date number to formatted date.
+10. Added 5 day history.
+11. Added css and refactored html structure for css containers.
+12. Tested the website, cleaned up JS and removed old days before adding 5 days.
+13. Added placeholder and fixed css.
+
+## Demo
+The following image demonstrates the application functionality:
+
+![weather dashboard demo](./assets/images/06-server-side-apis-homework-demo.png)
+
+
+-------------------------------------------------------------------------------------------------------------
 ## Acceptance Criteria
 
 ```
@@ -28,9 +62,6 @@ WHEN I click on a city in the search history
 THEN I am again presented with current and future conditions for that city
 ```
 
-The following image demonstrates the application functionality:
-
-![weather dashboard demo](./Assets/06-server-side-apis-homework-demo.png)
 
 ## Review
 

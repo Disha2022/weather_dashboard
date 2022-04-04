@@ -95,13 +95,12 @@ img{
 }
 /* section created in js */
 #forecast-container section {
-    display: inline-block;
     color: white;
     font-size: 150%;
     background-color: rgb(37, 57, 73);
-    margin-right: 5%;
-    padding-right: 9%;
-    padding-left: 2%;
+    margin-right: 3%;
+    padding-right: 3.5%;
+    padding-left: 1%;
 }
 .current-param{
 font-size: 150%;
